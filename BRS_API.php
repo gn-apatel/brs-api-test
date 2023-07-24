@@ -17,10 +17,12 @@ $password = 'QB6T9vmVw8WcbTZv8bGUJMs2E3SKU4jLBNJscNMZx4hyZdwfcta9ALqS4THXVxw679B
     $response_data = json_decode($output);
     $club_data = $response_data->data;
 
-    echo "Mobile-enabled BRS clubs \n "
+    echo "Mobile-enabled BRS clubs \n ";
     foreach ($club_data as $club){
-        if ($club->mobile_enabled == true){
+        if ($club->mobile_enabled){
             echo $club->name;
+            echo "\n";
+
         }
     }
 
