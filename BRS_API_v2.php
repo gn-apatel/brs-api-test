@@ -14,10 +14,15 @@ $response = $client->get('https://www.brsgolf.com/api/v2/clubs');
 echo $response->getStatusCode();
 
 if (200 == $response->getStatusCode()) {
-    $body = $response->getBody();
-    $arr_body = json_decode($body);
-    print_r($arr_body);
+    $output = $response->getBody();
+    $club_data = json_decode($output);
+    //print_r($response_data);
+    foreach ($club_data as $club) {
+        if ($club->mobile_enabled == true){
+            echo $club->name;
+            echo "\n";
+        }
+    }
 }
-
 
 ?>
