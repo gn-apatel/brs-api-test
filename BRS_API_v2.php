@@ -9,11 +9,10 @@ require_once  "vendor/autoload.php";
 
 use GuzzleHttp\Client;
 
-$client = new Client (['base_uri' => 'https://www.brsgolf.com',]);
-$response = $client->request('GET', '/api/v2/clubs', [
-    'query' => ['mobile_enabled' => true,
-        ]
-]);
+$client = new Client (['auth' => [$username, $password]]);
+$response = $client->get('https://www.brsgolf.com/api/v2/clubs');
+echo $response->getStatusCode();
+
 if (200 == $response->getStatusCode()) {
     $body = $response->getBody();
     $arr_body = json_decode($body);
