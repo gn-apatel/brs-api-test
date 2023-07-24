@@ -6,9 +6,10 @@ $password = 'QB6T9vmVw8WcbTZv8bGUJMs2E3SKU4jLBNJscNMZx4hyZdwfcta9ALqS4THXVxw679B
 
 $curl = curl_init($url);
 function API_call($method, $url, $data) {
+    // creating and initialising a curl session
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, "api.example.com");
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_URL, "api.example.com");     // sets up URL
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);          // returns the transfer as a string
     $output = curl_exec($curl);
     curl_close($curl);
 }
