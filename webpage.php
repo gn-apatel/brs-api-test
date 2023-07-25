@@ -63,14 +63,17 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
                                         <?php
                                         foreach($club->address as $addressline){
                                             if ($addressline != "") {
-                                                echo $addressline . ", ";
+                                                echo $addressline .", ";
                                             }
                                         }
                                         ?>
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                                            <?php $club_url = "https://www.brsgolf.com/" . $club->club_id; ?>
+                                            <a href="<?php echo $club_url ?>">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Visit</button>
+                                            </a>
                                         </div>
                                         <small class="text-body-secondary">(<?php echo $club->club_id ?>)</small>
                                     </div>
@@ -82,5 +85,5 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
                     </div>
                 </div>
             </div>
-<?php endif; ?>
+    <?php endif; ?>
 <?php endforeach; ?>
