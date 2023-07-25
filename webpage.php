@@ -45,13 +45,13 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
     </header>
 </div>
 
+<div class="py-5 bg-body-tertiary">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
 <?php foreach ($club_data as $club):
         if ($club->mobile_enabled): ?>
-
-            <div class="py-5 bg-body-tertiary">
-                <div class="container">
-
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
                         <div class="col">
                             <div class="card shadow-sm h-100">
@@ -82,8 +82,8 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
                         </div>
 
 
-                    </div>
-                </div>
-            </div>
     <?php endif; ?>
 <?php endforeach; ?>
+        </div>
+    </div>
+</div>
