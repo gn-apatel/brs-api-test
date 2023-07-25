@@ -15,13 +15,30 @@ echo $response->getStatusCode();
 
 if (200 == $response->getStatusCode()) {
     $output = $response->getBody();
-    $club_data = json_decode($output);
-    //print_r($response_data);
+    $response_data = json_decode($output);
+    $club_data = $response_data->_results;
+
     foreach ($club_data as $club) {
-        if ($club->mobile_enabled == true){
+        if ($club->mobile_enabled){
+            print_r($club->name . "\n");
+        }
+        //print_r($club->name);
+        /*if (property_exists("mobile_enabled", 'club')) {
+            print_r($club->name);
+            echo "\n";
+        } else {
+            echo "Key not found";
+        } */
+
+        /* if ($club->mobile_enabled == true){
             echo $club->name;
             echo "\n";
         }
+
+            if ($club['mobile_enabled'] == true){
+            echo $club['name'];
+            echo "\n";
+        */
     }
 }
 
