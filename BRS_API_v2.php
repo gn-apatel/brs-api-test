@@ -17,6 +17,7 @@
         $output = $response->getBody();
         $response_data = json_decode($output);          // decodes data from json and converts it to objects
         $club_data = $response_data->_results;  }        // removes header/extra info contained within the class
+
     ?>
 
     <!DOCTYPE html>
@@ -49,7 +50,7 @@
             </li>
                 <!-- outputs name with corresponding hyperlink -->
             <?php endif; ?>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
         </ul>
 
 
