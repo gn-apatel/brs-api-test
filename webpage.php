@@ -60,13 +60,12 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <?php}
-                                        echo $club->address->line1 . ", ";
-                                        echo $club->address->line2 . ", ";
-                                        echo $club->address->city . ", ";
-                                        echo $club->address->county . ", ";
-                                        echo $club->address->country . ", ";
-                                        echo $club->address->postcode;
+                                        <?php
+                                        foreach($club->address as $addressline){
+                                            if ($addressline != "") {
+                                                echo $addressline . ", ";
+                                            }
+                                        }
                                         ?>
                                     </p>
                                     <div class="d-flex justify-content-between align-items-center">
