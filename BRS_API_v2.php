@@ -19,7 +19,8 @@ if (200 == $response->getStatusCode()) {
 
     foreach ($club_data as $club) {
         if ($club->mobile_enabled){
-            print_r($club->name . "\n");
+            echo ($club->name . " (https://www.brsgolf.com/" . $club->club_id . ") \n");
+
         }
     }
 }
