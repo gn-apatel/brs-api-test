@@ -13,49 +13,54 @@
     $client = new Client (['auth' => [$username, $password]]);
     $response = $client->get('https://www.brsgolf.com/api/v2/clubs');
 
-    if (200 == $response->getStatusCode()) {            // 200 status code = success
+    if ($response->getStatusCode() == 200):             // 200 status code = success
         $output = $response->getBody();
         $response_data = json_decode($output);          // decodes data from json and converts it to objects
-        $club_data = $response_data->_results;  }        // removes header/extra info contained within the class
+        $club_data = $response_data->_results;         // removes header/extra info contained within the class
 
     ?>
 
-    <!DOCTYPE html>
+        <!DOCTYPE html>
 
-    <html lang="en" xmlns="http://www.w3.org/1999/html">
+        <html lang="en" xmlns="http://www.w3.org/1999/html">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Mobile-Enabled Clubs</title>
+        <head>
+            <meta charset="UTF-8">
+            <title>Mobile-Enabled Clubs</title>
 
-        <style>
-            body {
-                font-family: sans-serif;
-            }
-        </style>
-    </head>
+            <style>
+                body {
+                    font-family: sans-serif;
+                }
+            </style>
+        </head>
 
-    <body>
+        <body>
 
-    <h1>Mobile-Enabled BRS Clubs</h1>
+        <h1>Mobile-Enabled BRS Clubs</h1>
 
-        <ul>
-        <?php foreach ($club_data as $club):                  // loops through all clubs ?>
-            <?php if ($club->mobile_enabled): ?>
-            <li>
-                <?php
-                $club_url = "https://www.brsgolf.com/".$club->club_id;
-                echo ($club->name); ?>
-                <a href="<?php echo $club_url ?>">(<?php echo $club_url ?>)</a><br>
-            </li>
-                <!-- outputs name with corresponding hyperlink -->
-            <?php endif; ?>
-        <?php endforeach; ?>
-        </ul>
+            <ul>
+            <?php foreach ($club_data as $club):                  // loops through all clubs ?>
+                <?php if ($club->mobile_enabled): ?>
+                <li>
+                    <?php
+                    $club_url = "https://www.brsgolf.com/".$club->club_id;
+                    echo ($club->name); ?>
+                    <a href="<?php echo $club_url ?>">(<?php echo $club_url ?>)</a><br>
+                </li>
+                    <!-- outputs name with corresponding hyperlink -->
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
 
+        </body>
 
+        </html>
 
-
-</body>
-
-</html>
+    <?php
+    // if access to API not authorised --> different status code returned
+    // else statement below is run
+    else:
+        echo "Sorry! Access not authorised";
+    endif;
+    ?>
