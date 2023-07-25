@@ -11,7 +11,6 @@ use GuzzleHttp\Client;
 
 $client = new Client (['auth' => [$username, $password]]);
 $response = $client->get('https://www.brsgolf.com/api/v2/clubs');
-echo $response->getStatusCode();
 
 if (200 == $response->getStatusCode()) {
     $output = $response->getBody();
@@ -22,23 +21,6 @@ if (200 == $response->getStatusCode()) {
         if ($club->mobile_enabled){
             print_r($club->name . "\n");
         }
-        //print_r($club->name);
-        /*if (property_exists("mobile_enabled", 'club')) {
-            print_r($club->name);
-            echo "\n";
-        } else {
-            echo "Key not found";
-        } */
-
-        /* if ($club->mobile_enabled == true){
-            echo $club->name;
-            echo "\n";
-        }
-
-            if ($club['mobile_enabled'] == true){
-            echo $club['name'];
-            echo "\n";
-        */
     }
 }
 
