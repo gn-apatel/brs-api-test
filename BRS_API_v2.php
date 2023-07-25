@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Mobile-Enabled Clubs</title>
-
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Mobile-Enabled BRS Clubs</h1>
 
     <?php
     // USING GUZZLE
@@ -34,19 +16,43 @@
     if (200 == $response->getStatusCode()) {            // 200 status code = success
         $output = $response->getBody();
         $response_data = json_decode($output);          // decodes data from json and converts it to objects
-        $club_data = $response_data->_results;          // removes header/extra info contained within the class
+        $club_data = $response_data->_results;  }        // removes header/extra info contained within the class
     ?>
 
-        <ul>
-        <?php foreach ($club_data as $club){                 // loops through all clubs
-            if ($club->mobile_enabled){
-                echo ($club->name . " (https://www.brsgolf.com/" . $club->club_id . "</br>");
-                // outputs name with corresponding hyperlink
-            }
-        }
+    <!DOCTYPE html>
 
-    }?>
+    <html lang="en" xmlns="http://www.w3.org/1999/html">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Mobile-Enabled Clubs</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <h1>Mobile-Enabled BRS Clubs</h1>
+
+        <ul>
+        <?php foreach ($club_data as $club):                  // loops through all clubs ?>
+            <?php if ($club->mobile_enabled): ?>
+            <li>
+                <?php
+                $url = "https://www.brsgolf.com/" . $club->club_id;
+                echo ($club->name); ?>
+                <a href="<?php $url; ?>">(<?= $url ?>)</a><br>
+            </li>
+                <!-- outputs name with corresponding hyperlink -->
+            <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
+
+
 
 </body>
 
