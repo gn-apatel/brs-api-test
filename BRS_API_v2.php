@@ -7,20 +7,20 @@ $password = 'QB6T9vmVw8WcbTZv8bGUJMs2E3SKU4jLBNJscNMZx4hyZdwfcta9ALqS4THXVxw679B
 
 require_once  "vendor/autoload.php";
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client;          // imports in Guzzle library
 
 $client = new Client (['auth' => [$username, $password]]);
 $response = $client->get('https://www.brsgolf.com/api/v2/clubs');
 
-if (200 == $response->getStatusCode()) {
+if (200 == $response->getStatusCode()) {            // 200 status code = success
     $output = $response->getBody();
-    $response_data = json_decode($output);
-    $club_data = $response_data->_results;
+    $response_data = json_decode($output);          // decodes data from json and converts it to objects
+    $club_data = $response_data->_results;          // removes header/extra info contained within the class
 
-    foreach ($club_data as $club) {
+    foreach ($club_data as $club) {                 // loops through all clubs
         if ($club->mobile_enabled){
             echo ($club->name . " (https://www.brsgolf.com/" . $club->club_id . ") \n");
-
+            // outputs name with corresponding hyperlink
         }
     }
 }
