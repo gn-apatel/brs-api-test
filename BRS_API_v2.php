@@ -43,14 +43,15 @@
             <?php if ($club->mobile_enabled): ?>
             <li>
                 <?php
-                $url = "https://www.brsgolf.com/" . $club->club_id;
+                $club_url = "https://www.brsgolf.com/".$club->club_id;
                 echo ($club->name); ?>
-                <a href="<?php $url; ?>">(<?= $url ?>)</a><br>
+                <a href="<?php echo $club_url ?>">(<?php echo $club_url ?>)</a><br>
             </li>
                 <!-- outputs name with corresponding hyperlink -->
             <?php endif; ?>
             <?php endforeach; ?>
         </ul>
+
 
 
 
