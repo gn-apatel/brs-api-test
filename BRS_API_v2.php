@@ -13,16 +13,11 @@ use GuzzleHttp\Client;          // imports in Guzzle library
 $client = new Client (['auth' => [$username, $password]]);
 $response = $client->get('https://www.brsgolf.com/api/v2/clubs');
 
-$code = $response->getStatusCode();
-$code = 200;
-echo "Status Code: " . $code . "</br>";
 
-// if ($response->getStatusCode() == 200):             // 200 status code = success
-if($code == 200):
+if ($response->getStatusCode() == 200):             // 200 status code = success
     $output = $response->getBody();
     $response_data = json_decode($output);          // decodes data from json and converts it to objects
     $club_data = $response_data->_results;         // removes header/extra info contained within the class
-    $club_data =  [];
 
     ?>
 
