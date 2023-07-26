@@ -44,21 +44,21 @@ if ($response->getStatusCode() == 200):             // 200 status code = success
     if (empty($club_data)):         // if no data is retrieved (if _results is empty)
         echo "No Clubs Found!";
     ?>
-    <ul>
+        <ul>
         <?php
-        else:
-            foreach ($club_data as $club):                  // loops through all clubs ?>
-                <?php if ($club->mobile_enabled): ?>
-                    <li>
-                        <?php
-                        $club_url = "https://www.brsgolf.com/".$club->club_id;
-                        echo ($club->name); ?>
-                        <a href="<?php echo $club_url ?>">(<?php echo $club_url ?>)</a><br>
-                    </li>
-                    <!-- outputs name with corresponding hyperlink -->
-                <?php endif; ?>
-            <?php endforeach; ?>
-    </ul>
+            else:
+                foreach ($club_data as $club):                  // loops through all clubs ?>
+                    <?php if ($club->mobile_enabled): ?>
+                        <li>
+                            <?php
+                            $club_url = "https://www.brsgolf.com/".$club->club_id;
+                            echo ($club->name); ?>
+                            <a href="<?php echo $club_url ?>">(<?php echo $club_url ?>)</a><br>
+                        </li>
+                        <!-- outputs name with corresponding hyperlink -->
+                    <?php endif; ?>
+                <?php endforeach; ?>
+        </ul>
     <?php endif;  ?>
     </body>
 
