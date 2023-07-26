@@ -18,7 +18,7 @@ if ($response->getStatusCode() == 200):             // 200 status code = success
     $output = $response->getBody();
     $response_data = json_decode($output);          // decodes data from json and converts it to objects
     $club_data = $response_data->_results;         // removes header/extra info contained within the class
-
+    // $club_data = [];
     ?>
 
     <!DOCTYPE html>
@@ -42,7 +42,7 @@ if ($response->getStatusCode() == 200):             // 200 status code = success
 
     <?php
     if (empty($club_data)):         // if no data is retrieved (if _results is empty)
-    echo "No Clubs Found!";
+        echo "No Clubs Found!";
     ?>
     <ul>
         <?php
@@ -58,9 +58,8 @@ if ($response->getStatusCode() == 200):             // 200 status code = success
                     <!-- outputs name with corresponding hyperlink -->
                 <?php endif; ?>
             <?php endforeach; ?>
-        <?php endif;  ?>
     </ul>
-
+    <?php endif;  ?>
     </body>
 
     </html>
