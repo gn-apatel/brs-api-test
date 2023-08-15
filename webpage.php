@@ -89,7 +89,7 @@ if (200 == $response->getStatusCode()) {            // 200 status code = success
 
 
     <?php endif; ?>
-<?php endforeach; ?>
+<?php endforeach;  // use array_filter to remove emptys?>
         </div>
     </div>
 </div>
