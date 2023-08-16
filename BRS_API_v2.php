@@ -1,6 +1,7 @@
 
 <?php
     require_once  "vendor/autoload.php";
+
     use GuzzleHttp\Client;
 
     $url = 'https://www.brsgolf.com/api/v2/clubs';
